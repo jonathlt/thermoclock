@@ -9,6 +9,11 @@
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h>
 
+#include <NTPClient.h>
+
+WiFiUDP ntpUDP;
+
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000);
 
 // Data wire is plugged into port 2 on the Arduino
 #define ONE_WIRE_BUS 2
@@ -48,6 +53,10 @@ void setup(void)
   display.drawString(0,0,"WIFI Connected");
   display.display();
   delay(2000);
+
+  WiFi.begin();
+
+  timeClient.begin();
 }
 
 /*
@@ -74,5 +83,11 @@ void loop(void)
   
   display.drawString(0, 19, displaystr);
   display.display();
+
+  timeClient.update();
+  Serial.println(timeClient.getFormattedTime());
+  
   delay(1000);
+  
+  
 }
