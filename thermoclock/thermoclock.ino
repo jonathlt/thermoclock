@@ -4,6 +4,11 @@
 #include <Wire.h>
 #include "SSD1306.h"
 
+#include <ESP8266WiFi.h>
+#include <DNSServer.h>
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>
+
 
 // Data wire is plugged into port 2 on the Arduino
 #define ONE_WIRE_BUS 2
@@ -26,13 +31,23 @@ void setup(void)
   Serial.begin(9600);
   Serial.println("Dallas Temperature IC Control Library Demo");
 
+  //Wifi captive portal
+  WiFiManager wifiManager;
+
   // Start up the library
   sensors.begin();
 
   display.init();
   display.flipScreenVertically();
   display.setFont(ArialMT_Plain_10);
-
+  display.clear();
+  display.drawString(0,0,"WIFI Connecting..");
+  display.display();
+  wifiManager.autoConnect("Thermoclock");
+  display.clear();
+  display.drawString(0,0,"WIFI Connected");
+  display.display();
+  delay(2000);
 }
 
 /*
