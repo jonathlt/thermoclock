@@ -13,7 +13,7 @@
 
 WiFiUDP ntpUDP;
 
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000);
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 0, 60000);
 
 // Data wire is plugged into port 2 on the Arduino
 #define ONE_WIRE_BUS 2
@@ -64,6 +64,9 @@ void setup(void)
  */
 void loop(void)
 { 
+  int hours;
+  int minutes;
+  
   display.clear();
   // call sensors.requestTemperatures() to issue a global temperature 
   // request to all devices on the bus
@@ -86,6 +89,18 @@ void loop(void)
 
   timeClient.update();
   Serial.println(timeClient.getFormattedTime());
+
+  // display.drawString(0,30, timeClient.getFormattedTime());
+
+  hours = timeClient.getHours();
+  minutes = timeClient.getMinutes();
+  
+  String hoursStr = hours < 10 ? "0" + String(hours) : String(hours);
+  String minuteStr = minutes < 10 ? "0" + String(minutes) : String(minutes);
+
+  display.drawString(0,30, hoursStr + ":" + minuteStr);
+  
+  display.display();
   
   delay(1000);
   
