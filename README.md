@@ -6,7 +6,7 @@ Uses
 * Wifi manager captive portal https://github.com/tzapu/WiFiManager
 
 #### Building the circuit
-![Layout](https://github.com/jonathlt/thermoclock/thermoclock_bb.png "Breadboard Layout")
+![Layout](https://github.com/jonathlt/thermoclock/blob/master/thermoclock_bb.png "Breadboard Layout")
 
 #### Compiling the program
 Add the ESP8266 Oled Driver for SSD1306 by Daniel Eichorn, Fabrice Weinberg Version 3.2.5
