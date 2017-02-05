@@ -6,4 +6,4 @@ Uses
 * Wifi manager captive portal https://github.com/tzapu/WiFiManager
 
 #### Burning the program to the NodeMCU
-Board: "NodeMCU 0.9 ( ESP12 Module)
+Board: "NodeMCU 0.9 ( ESP12 Module)"
