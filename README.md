@@ -4,6 +4,7 @@ Clock and thermometer using NodeMcu and arduino esp8266 libraries
 Uses 
 * NTP library https://github.com/arduino-libraries/NTPClient
 * Wifi manager captive portal https://github.com/tzapu/WiFiManager
+
 #### Compiling the program
 Add the ESP8266 Oled Driver for SSD1306 by Daniel Eichorn, Fabrice Weinberg Version 3.2.5
 
