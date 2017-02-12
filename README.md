@@ -21,10 +21,16 @@ Board: "NodeMCU 0.9 ( ESP12 Module)"
 If this board is not in the list in "Tools/Boards" in the IDE, need to grab some more bits. 
 * Go to File/Preferences and type the following in "Additional Boards Manager URLs" http://arduino.esp8266.com/stable/package_esp8266com_index.json, then press OK. 
 * Now go to Tools/Boards/Board Manager and search for "ESP8266"
-* Select "ESP8266 by ESP8266 Community", then install. 
+* Select "ESP8266 by ESP8266 Community", then install.
+ 
 Adding the libraries:
+
 Sketch/Include Library/Manage Libraries/Search for OneWire then install
+
 Sketch/Include Library/Manage Libraries/Search for DallasTemperature then install
+
 Sketch/Include Library/Manage Libraries/Search for SSD1306 then install ESP8266 Oled Driver for SSD1306 display
+
 Sketch/Include Library/Manage Libraries/Search for WifiManager then install
+
 Sketch/Include Library/Manage Libraries/Search for NTPClient then install NTPClient by fabrice Weinberg
