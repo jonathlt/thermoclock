@@ -10,6 +10,7 @@
 #include <WiFiManager.h>
 
 #include <NTPClient.h>
+#include "images.h"
 
 WiFiUDP ntpUDP;
 
@@ -26,6 +27,14 @@ DallasTemperature sensors(&oneWire);
 
 // Initialize the OLED display using Wire library
 SSD1306  display(0x3c, D2, D1);
+
+void drawWIFIImage() {
+    display.drawXbm(34, 14, WiFi_Logo_width, WiFi_Logo_height, WiFi_Logo_bits);
+}
+
+bool DisplayTemp = 1;
+  int hours;
+  int minutes;
 
 /*
  * The setup function. We only start the sensors here
@@ -46,10 +55,12 @@ void setup(void)
   display.flipScreenVertically();
   display.setFont(ArialMT_Plain_10);
   display.clear();
+  drawWIFIImage();
   display.drawString(0,0,"WIFI Connecting..");
   display.display();
   wifiManager.autoConnect("Thermoclock");
   display.clear();
+  drawWIFIImage();
   display.drawString(0,0,"WIFI Connected");
   display.display();
   delay(2000);
@@ -64,45 +75,51 @@ void setup(void)
  */
 void loop(void)
 { 
-  int hours;
-  int minutes;
+
   
   display.clear();
-  // call sensors.requestTemperatures() to issue a global temperature 
-  // request to all devices on the bus
-  Serial.print("Requesting temperatures...");
-  sensors.requestTemperatures(); // Send the command to get temperatures
-  Serial.println("DONE");
-  // After we got the temperatures, we can print them here.
-  // We use the function ByIndex, and as an example get the temperature from the first sensor only.
-  Serial.print("Temperature for the device 1 (index 0) is: ");
-  Serial.println(sensors.getTempCByIndex(0));
-  display.setFont(ArialMT_Plain_10);
-  char tempstr[5];
-  String displaystr = "Temperature: ";
-  dtostrf(sensors.getTempCByIndex(0),5,2,tempstr);
-  displaystr.concat(tempstr);
-  displaystr.concat("°C");
   
-  display.drawString(0, 19, displaystr);
-  display.display();
-
-  timeClient.update();
-  Serial.println(timeClient.getFormattedTime());
-
-  // display.drawString(0,30, timeClient.getFormattedTime());
-
-  hours = timeClient.getHours();
-  minutes = timeClient.getMinutes();
+  if (DisplayTemp)
+  {
+    
+    // call sensors.requestTemperatures() to issue a global temperature 
+    // request to all devices on the bus
+    Serial.print("Requesting temperatures...");
+    sensors.requestTemperatures(); // Send the command to get temperatures
+    Serial.println("DONE");
+    // After we got the temperatures, we can print them here.
+    // We use the function ByIndex, and as an example get the temperature from the first sensor only.
+    Serial.print("Temperature for the device 1 (index 0) is: ");
+    Serial.println(sensors.getTempCByIndex(0));
+    display.setFont(ArialMT_Plain_16);
+    char tempstr[5];
+    String displaystr = "";
+    dtostrf(sensors.getTempCByIndex(0),5,2,tempstr);
+    displaystr.concat(tempstr);
+    displaystr.concat("°C");
+    
+    display.drawString(30, 19, displaystr);
+    display.display();
+  }
+  else
+  {
+    timeClient.update();
+    Serial.println(timeClient.getFormattedTime());
   
-  String hoursStr = hours < 10 ? "0" + String(hours) : String(hours);
-  String minuteStr = minutes < 10 ? "0" + String(minutes) : String(minutes);
+    hours = timeClient.getHours();
+    minutes = timeClient.getMinutes();
+    
+    String hoursStr = hours < 10 ? "0" + String(hours) : String(hours);
+    String minuteStr = minutes < 10 ? "0" + String(minutes) : String(minutes);
+  
+    display.drawString(30,19, hoursStr + ":" + minuteStr);
+    
+    display.display();
+  }
+  
+  delay(3000);
 
-  display.drawString(0,30, hoursStr + ":" + minuteStr);
-  
-  display.display();
-  
-  delay(1000);
+  DisplayTemp = !DisplayTemp;
   
   
 }
