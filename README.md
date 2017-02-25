@@ -9,8 +9,19 @@ Uses
 * Dallas Temperature https://github.com/milesburton/Arduino-Temperature-Control-Library
 
 #### Building the circuit
+Example layout for the circuit is below. Use a USB A to micro B cable for power and any programming.
 ![Layout](thermoclock_bb.png "Breadboard Layout")
 
+Display		NodeMCU
+SCL		D1
+SDA		D2
+
+DS18B20		NodeMCU
+1		GND
+2		D4
+3		3V3
+#### Connecting to WiFi ####
+The clock uses wifi to get accurate time from the internet. To connect to your WiFi network, connect to the Thermoclock WiFi station on a mobile phone. Enter your wifi ID and password here so the clock has access.
 #### Compiling the program
 Add the ESP8266 Oled Driver for SSD1306 by Daniel Eichorn, Fabrice Weinberg Version 3.2.5
 
