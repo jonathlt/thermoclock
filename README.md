@@ -12,7 +12,7 @@ Uses
 Example layout for the circuit is below. Use a USB A to micro B cable for power and any programming.
 ![Layout](thermoclock_bb.png "Breadboard Layout")
 
-Display&nbsp;&nbsp;&nbsp;NodeMCU
+Display&emsp;&emsp;&emsp;NodeMCU
 
 SCL&nbsp;&nbsp;&nbsp;D1
 SDA&nbsp;&nbsp;&nbsp;D2
