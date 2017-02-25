@@ -12,21 +12,19 @@ Uses
 Example layout for the circuit is below. Use a USB A to micro B cable for power and any programming.
 ![Layout](thermoclock_bb.png "Breadboard Layout")
 
-Display		NodeMCU
+Display&nbsp;&nbsp;&nbsp;NodeMCU
 
-SCL		D1
+SCL&nbsp;&nbsp;&nbsp;D1
+SDA&nbsp;&nbsp;&nbsp;D2
 
-SDA		D2
+DS18B20&nbsp;&nbsp;&nbsp;NodeMCU
+1&nbsp;&nbsp;&nbsp;GND
 
-DS18B20		NodeMCU
+2&nbsp;&nbsp;&nbsp;D4
 
-1		GND
-
-2		D4
-
-3		3V3
+3&nbsp;&nbsp;&nbsp;3V3
 #### Connecting to WiFi ####
-The clock uses wifi to get accurate time from the internet. To connect to your WiFi network, connect to the "Thermoclock" WiFi station on a mobile phone. Enter your wifi ID and password here so the clock has access.
+The clock uses wifi to get accurate time from the internet. To connect to your WiFi network, connect to the "Thermoclock" WiFi station on a mobile phone. Enter your wifi ID and password in the web page that is displayed when you open a browser so the clock has access.
 #### Compiling the program
 Add the ESP8266 Oled Driver for SSD1306 by Daniel Eichorn, Fabrice Weinberg Version 3.2.5
 
