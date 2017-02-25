@@ -15,9 +15,11 @@ Example layout for the circuit is below. Use a USB A to micro B cable for power 
 Display&emsp;&emsp;&emsp;NodeMCU
 
 SCL&emsp;&emsp;&emsp;D1
+
 SDA&emsp;&emsp;&emsp;D2
 
 DS18B20&emsp;&emsp;&emsp;NodeMCU
+
 1&emsp;&emsp;&emsp;GND
 
 2&emsp;&emsp;&emsp;D4
