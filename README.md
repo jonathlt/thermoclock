@@ -12,19 +12,40 @@ Uses
 Example layout for the circuit is below. Use a USB A to micro B cable for power and any programming.
 ![Layout](thermoclock_bb.png "Breadboard Layout")
 
-Display&emsp;&emsp;&emsp;NodeMCU
+<table>
+<tr>
+	<th>Display</th>
+	<th>NodeMCU</th>
+</tr>
+<tr>
+	<td>SCL</td>
+	<td>D1</td>
+</tr>
+<tr>
+	<td>SDA</td>
+	<td>D2</td>
+</tr>
+</table>
 
-SCL&emsp;&emsp;&emsp;D1
+<table>
+<tr>
+	<th>DS18B20</th>
+	<th>NodeMCU</th>
+</tr>
+<tr>
+	<td>1</td>
+	<td>GND</td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>D4</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>3V3</td>
+</tr>
+</table>
 
-SDA&emsp;&emsp;&emsp;D2
-
-DS18B20&emsp;&emsp;&emsp;NodeMCU
-
-1&emsp;&emsp;&emsp;GND
-
-2&emsp;&emsp;&emsp;D4
-
-3&emsp;&emsp;&emsp;3V3
 #### Connecting to WiFi ####
 The clock uses wifi to get accurate time from the internet. To connect to your WiFi network, connect to the "Thermoclock" WiFi station on a mobile phone. Enter your wifi ID and password in the web page that is displayed when you open a browser so the clock has access.
 #### Compiling the program
